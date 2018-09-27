@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block page %}
+<h1>{{mærke["mærketitel"]}}</h1>
+{% if "niveau" not in mærke %}
+<p>For hver af de 10 mærkeoplevelser I har, stiger I et mærketal. I vælger selv rækkefølgen og kan godt styrke en oplevelse ved at prøve den igen senere.</p>
+{% for oplevelse in mærke["oplevelser"] %}
+<a href="{{oplevelse['url']}}" class="block oplevelse">
+  <div><img src='{{oplevelse["thumb"].url}}'/></div>
+  <div>{{oplevelse["oplevelsetitel"]}}</div>
+</a>
+{% endfor %}
+{% else %}
+{% for niveau in mærke["niveau"] %}
+<div class="niveau">
+  <div class="niveau-level">{{loop.index}}</div>
+  <span class="niveau-text">{{niveau}}</span>
+</div>
+<div class="niveau-triangle"></div>
+{% endfor %}
+{% endif %}
+<hr/>
+{{mærke["intro"] | safe}}
+{{mærke["mærkeviden"] | safe}}
+<div>Redaktør: {{mærke["redaktør"]["name"]}}</div>
+{% endblock %}

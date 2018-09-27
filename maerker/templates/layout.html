@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="da">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="content-language" content="da" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+
+    <title>FDF Mærkeforslag</title>
+
+    <link rel="stylesheet" type="text/css" href="/static/style.css"/>
+  </head>
+  <body>
+    <div class="header">
+      <a href="/">Mærkedatabasen.dk</a>
+      {% if mærke %}
+      <a>/</a>
+      <a href="/{{mærke['url']}}">{{mærke["mærketitel"]}}</a>
+      {% endif %}
+      {% if oplevelse %}
+      <a>/</a>
+      <a href="/{{oplevelse['url']}}">{{oplevelse["oplevelsetitel"]}}</a>
+      {% endif %}
+      <a href="https://fdf.dk/"><img class="skjold-icon" src="/static/fdf_skjold_hvid_no_padding.png" /></a>
+    </div>
+    <div class="page">
+      {% block page %}{% endblock %}
+    </div>
+  </body>
+</html>

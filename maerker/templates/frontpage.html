@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block page %}
+<h1>Oplevelsesmærker</h1>
+{% for mærke in mærker %}
+{% if "niveau" not in mærke %}
+<a href="{{mærke['url']}}" class="block mærke">
+  <img src="{{mærke['icon'].url}}"/>
+  <div>{{mærke["mærkecanonical"]}}</div>
+</a>
+{% endif %}
+{% endfor %}
+
+<h1>Distancemærker</h1>
+{% for mærke in mærker %}
+{% if "niveau" in mærke %}
+<a href="{{mærke['url']}}" class="block mærke">
+  <div><img src="{{mærke['icon'].url}}"/></div>
+  <div>{{mærke["mærkecanonical"]}}</div>
+</a>
+{% endif %}
+{% endfor %}
+
+<hr/>
+<h1>Sådan tager vi mærker sammen</h1>
+<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.&nbsp;&nbsp;Donec hendrerit tempor tellus.&nbsp;&nbsp;Donec pretium posuere tellus.&nbsp;&nbsp;Proin quam nisl, tincidunt et, mattis eget, convallis nec, purus.&nbsp;&nbsp;Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.&nbsp;&nbsp;Nulla posuere.&nbsp;&nbsp;Donec vitae dolor.&nbsp;&nbsp;Nullam tristique diam non turpis.&nbsp;&nbsp;Cras placerat accumsan nulla.&nbsp;&nbsp;Nullam rutrum.&nbsp;&nbsp;Nam vestibulum accumsan nisl.<br><br></p>
+
+{% endblock %}

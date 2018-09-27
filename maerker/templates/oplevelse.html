@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block page %}
+<div class="streamer">
+  <img src='{{oplevelse["images"][0].url}}'/>
+  <div class="author">Foto: Det var mig</div>
+</div>
+<!-- <-{{mærke["mærketitel"]}} -->
+<h1>{{oplevelse["oplevelsetitel"] | safe }}</h1>
+{{oplevelse["beskrivelse"] | safe }}
+{{mærke["intro"] | safe }}
+{{oplevelse["oplevelseviden"] | safe }}
+{{mærke["viden"] | safe }}
+<div>Redaktør: {{oplevelse["redaktør"]["name"]}}</div>
+{% endblock %}
