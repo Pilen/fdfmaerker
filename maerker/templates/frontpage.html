@@ -4,7 +4,7 @@
 <h1>Oplevelsesmærker</h1>
 {% for mærke in mærker %}
 {% if "niveau" not in mærke %}
-<a href="{{mærke['url']}}" class="block mærke">
+<a href="/{{mærke['url']}}" class="block mærke">
   <img src="{{mærke['icon'].url}}"/>
   <div>{{mærke["mærkecanonical"]}}</div>
 </a>
@@ -14,7 +14,7 @@
 <h1>Distancemærker</h1>
 {% for mærke in mærker %}
 {% if "niveau" in mærke %}
-<a href="{{mærke['url']}}" class="block mærke">
+<a href="/{{mærke['url']}}" class="block mærke">
   <div><img src="{{mærke['icon'].url}}"/></div>
   <div>{{mærke["mærkecanonical"]}}</div>
 </a>

@@ -65,8 +65,9 @@ def ikon(*args, **kwargs):
 
 @macro
 def niveau(text, state):
-    print("niveau")
-    state["niveau"] = parse_arguments(text, "|")
+    if "niveau" not in state:
+        state["niveau"] = []
+    state["niveau"].append(text)
     return ""
 
 
@@ -94,7 +95,7 @@ class Image:
         url = str(self.url)
         if url.startswith("/"):
             url = url[1:]
-        if not resize or True:
+        if not resize:
             shutil.copy(self.path, destination / url)
         else:
             print("Copying image resize")
@@ -256,15 +257,16 @@ def build_website(mærker, destination):
 def build():
     try:
         with tempfile.TemporaryDirectory() as tmp:
-            destination = Path("final")
+            destination = Path("content")
             tmp = Path(tmp)
-            source = Path("raw2")
+            source = Path("raw3")
             state = collections.ChainMap()
             mærker = [get_mærke(path, state.new_child())
                       for path in source.glob("*")
                       if path.is_dir()]
             # mærker = [get_mærke(Path("raw/testmærke"), state.new_child())]
             # mærker = [get_mærke(Path("raw2/bålaktivitet"), state.new_child())]
+            # mærker = [get_mærke(Path("raw2/vandre"), state.new_child())]
             # pprint(mærker[0])
             build_website(mærker, tmp)
             shutil.rmtree(str(destination), ignore_errors=True)
